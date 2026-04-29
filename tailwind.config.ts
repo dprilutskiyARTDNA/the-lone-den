@@ -19,6 +19,11 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          deep: "hsl(var(--gold-deep))",
+          soft: "hsl(var(--gold-soft))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -63,6 +68,15 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        display: ['"Bebas Neue"', '"Archivo Black"', 'system-ui', 'sans-serif'],
+        brutal: ['"Archivo Black"', '"Bebas Neue"', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        gold: "var(--shadow-gold)",
+        deep: "var(--shadow-deep)",
+      },
       keyframes: {
         "accordion-down": {
           from: {
@@ -80,10 +94,25 @@ export default {
             height: "0",
           },
         },
+        "den-rise": {
+          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "gold-shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "den-rise": "den-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "marquee": "marquee 40s linear infinite",
+        "gold-shimmer": "gold-shimmer 6s linear infinite",
       },
     },
   },
