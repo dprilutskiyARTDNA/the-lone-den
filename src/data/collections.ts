@@ -5,7 +5,7 @@ import dantanaA from "@/assets/card-dantana-a.jpg";
 import dantanaB from "@/assets/card-dantana-b.jpg";
 import dantanaC from "@/assets/card-dantana-c.jpg";
 import xfiles from "@/assets/card-xfiles.jpg";
-import skullcolor from "@/assets/card-skullcolor.jpg";
+import lonewolf from "@/assets/card-lonewolf.jpg";
 import bitebullet from "@/assets/card-bitebullet.jpg";
 import anarchy from "@/assets/card-anarchy.jpg";
 import lonecrest from "@/assets/card-lonecrest.jpg";
@@ -18,7 +18,7 @@ export type Collection = {
   subtitle: string;
   image: string;
   category: "Hoodies" | "Jackets" | "Bombers" | "Tees" | "Jeans" | "Hats" | "Joggers";
-  flag?: "INVERTED" | "NEW DROP" | "ARCHIVE" | "RESTOCK";
+  flag?: "INVERTED" | "NEW DROP" | "ARCHIVE" | "RESTOCK" | "ALBUM MERCH";
   inverted?: boolean;   // 180° label
 };
 
@@ -85,12 +85,13 @@ export const collections: Collection[] = [
     inverted: true,
   },
   {
-    id: "skullcolor",
+    id: "lonewolf",
     index: "08",
-    title: "SKULL COLOR",
-    subtitle: "Tactical & High-Gloss",
-    image: skullcolor,
+    title: "LONE WOLF CHRONICLES",
+    subtitle: "Album Merch Capsule",
+    image: lonewolf,
     category: "Tees",
+    flag: "ALBUM MERCH",
   },
   {
     id: "bitebullet",
