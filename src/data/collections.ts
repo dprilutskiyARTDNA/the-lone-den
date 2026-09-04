@@ -6,7 +6,7 @@ import dantanaB from "@/assets/card-dantana-b.jpg";
 import dantanaC from "@/assets/card-dantana-c.jpg";
 import xfiles from "@/assets/card-xfiles.jpg";
 import lonewolf from "@/assets/card-lonewolf.jpg";
-import bitebullet from "@/assets/card-bitebullet.jpg";
+import acidwash from "@/assets/card-acidwash.jpg";
 import anarchy from "@/assets/card-anarchy.jpg";
 import lonecrest from "@/assets/card-lonecrest.jpg";
 import denimwolf from "@/assets/card-denimwolf.jpg";
@@ -36,9 +36,9 @@ export const collections: Collection[] = [
     id: "rapgame",
     index: "02",
     title: "STATE OF THE MIC",
-    subtitle: "USA × UA Varsity",
+    subtitle: "Heavyweight Crewneck",
     image: rapgame,
-    category: "Jackets",
+    category: "Hoodies",
     flag: "NEW DROP",
   },
   {
@@ -94,13 +94,13 @@ export const collections: Collection[] = [
     flag: "ALBUM MERCH",
   },
   {
-    id: "bitebullet",
+    id: "acidwash",
     index: "09",
-    title: "BITE THE BULLET",
-    subtitle: "Blood Leather Werewolf",
-    image: bitebullet,
-    category: "Jackets",
-    flag: "ARCHIVE",
+    title: "ACID PSALM",
+    subtitle: "Acid-Wash Oversized Tee",
+    image: acidwash,
+    category: "Tees",
+    flag: "NEW DROP",
   },
   {
     id: "anarchy",

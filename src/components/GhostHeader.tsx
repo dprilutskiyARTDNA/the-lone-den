@@ -26,7 +26,7 @@ export default function GhostHeader() {
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10 h-16 flex items-center justify-between">
         <Link
-          to="/"
+          to="/app"
           className="font-display text-xl tracking-[0.32em] text-foreground hover:text-gold transition-colors"
           aria-label="THE LONE DEN — Home"
         >
