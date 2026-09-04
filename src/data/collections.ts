@@ -6,7 +6,7 @@ import dantanaB from "@/assets/card-dantana-b.jpg";
 import dantanaC from "@/assets/card-dantana-c.jpg";
 import xfiles from "@/assets/card-xfiles.jpg";
 import lonewolf from "@/assets/card-lonewolf.jpg";
-import bitebullet from "@/assets/card-bitebullet.jpg";
+import acidwash from "@/assets/card-acidwash.jpg";
 import anarchy from "@/assets/card-anarchy.jpg";
 import lonecrest from "@/assets/card-lonecrest.jpg";
 import denimwolf from "@/assets/card-denimwolf.jpg";
