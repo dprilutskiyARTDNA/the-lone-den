@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
 import SiteFooter from "@/components/SiteFooter";
-import { submitWaitlist, submitSellerApplication } from "@/lib/submissions";
+import { submitWaitlist, submitSellerApplication, type SellerApplication } from "@/lib/submissions";
 
 const waitlistSchema = z.object({
   email: z.string().trim().email({ message: "Enter a valid email address" }).max(255),
@@ -59,7 +59,7 @@ export default function Landing() {
       return;
     }
     setBusy(true);
-    await submitSellerApplication(parsed.data);
+    await submitSellerApplication(parsed.data as SellerApplication);
     setBusy(false);
     setSeller({ name: "", email: "", brand: "", link: "", gearType: "Streetwear" });
     toast({ title: "APPLICATION RECEIVED", description: "A curator will review your work and reach out." });
