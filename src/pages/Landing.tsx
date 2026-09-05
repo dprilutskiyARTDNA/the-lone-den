@@ -5,6 +5,8 @@ import { toast } from "@/hooks/use-toast";
 import SiteFooter from "@/components/SiteFooter";
 import EarningsCalculator from "@/components/EarningsCalculator";
 import { submitWaitlist, submitSellerApplication, type SellerApplication } from "@/lib/submissions";
+import wolfThornsImg from "@/assets/card-wolfthorns.jpg";
+import anarchyImg from "@/assets/card-anarchy.jpg";
 
 const waitlistSchema = z.object({
   email: z.string().trim().email({ message: "Enter a valid email address" }).max(255),
