@@ -24,6 +24,47 @@ const sellerSchema = z.object({
 const gearStyles = ["Streetwear", "Cut & Sew", "Customs", "Vintage"] as const;
 const dropVolumes = ["1-10 pieces", "10-50 pieces", "50+ pieces"] as const;
 
+const featuredDrops = [
+  {
+    title: "WOLF N THORNS",
+    tag: "FLAGSHIP DROP",
+    image: wolfThornsImg,
+    apply: false,
+  },
+  {
+    title: "SOFISTICATED ANARCHY",
+    tag: "FEATURED BRAND",
+    image: anarchyImg,
+    apply: false,
+  },
+  {
+    title: "YOUR BRAND HERE",
+    tag: "ACCEPTING APPLICATIONS",
+    text: "Reserve your slot for the next drop season.",
+    image: null,
+    apply: true,
+  },
+] as const;
+
+const faqItems = [
+  {
+    q: "How do listing and platform fees work?",
+    a: "A flat 3% per sale — that's it. No listing fees, no monthly subscriptions, no per-item charges. List as much as you want, pay nothing until something sells.",
+  },
+  {
+    q: "How are independent brands vetted?",
+    a: "Every application is reviewed by a curator focused on authentic streetwear, cut & sew, customs, and archive vintage. We block dropshippers and mass-produced filler to keep the Den curated and culture-first.",
+  },
+  {
+    q: "When do sellers get paid?",
+    a: "Direct, next-day payouts to your linked account. No 5–21 day holds, no rolling reserves — your money moves when your drop sells.",
+  },
+  {
+    q: "Can I sell on other platforms simultaneously?",
+    a: "Always. The Lone Den is 100% non-exclusive. Run your Shopify, Instagram, or Depop in parallel — we never lock your catalog or your audience behind us.",
+  },
+];
+
 const comparison = [
   { label: "Seller fees", den: "3% flat", them: "8–13% + payment fees" },
   { label: "Listing cuts", den: "Zero. List free, always.", them: "Per-listing charges" },
