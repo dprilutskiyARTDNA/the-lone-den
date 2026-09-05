@@ -10,6 +10,7 @@ export type SellerApplication = {
   brand: string;
   link: string;
   gearType: string;
+  dropVolume: string;
 };
 
 function push(key: string, value: unknown) {
