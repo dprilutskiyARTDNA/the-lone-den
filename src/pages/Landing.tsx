@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
 import SiteFooter from "@/components/SiteFooter";
+import EarningsCalculator from "@/components/EarningsCalculator";
 import { submitWaitlist, submitSellerApplication, type SellerApplication } from "@/lib/submissions";
 
 const waitlistSchema = z.object({
