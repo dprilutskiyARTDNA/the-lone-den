@@ -184,6 +184,8 @@ export default function Landing() {
         </div>
       </section>
 
+      <EarningsCalculator />
+
       {/* SELLER APPLICATION */}
       <section id="apply" className="border-t border-border">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32 grid md:grid-cols-12 gap-12">
