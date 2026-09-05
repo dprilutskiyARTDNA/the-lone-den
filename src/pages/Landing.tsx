@@ -39,6 +39,7 @@ export default function Landing() {
     brand: "",
     link: "",
     gearType: "Streetwear",
+    dropVolume: "1-10 pieces",
   });
   const [busy, setBusy] = useState(false);
 
@@ -66,8 +67,11 @@ export default function Landing() {
     setBusy(true);
     await submitSellerApplication(parsed.data as SellerApplication);
     setBusy(false);
-    setSeller({ name: "", email: "", brand: "", link: "", gearType: "Streetwear" });
-    toast({ title: "APPLICATION RECEIVED", description: "A curator will review your work and reach out." });
+    setSeller({ name: "", email: "", brand: "", link: "", gearType: "Streetwear", dropVolume: "1-10 pieces" });
+    toast({
+      title: "APPLICATION RECEIVED.",
+      description: "Welcome to The Lone Den pipeline—we'll reach out shortly.",
+    });
   };
 
   const field =
