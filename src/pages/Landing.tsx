@@ -196,6 +196,70 @@ export default function Landing() {
 
       <EarningsCalculator />
 
+      {/* FEATURED DEN DROPS */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32">
+          <p className="font-display text-[11px] tracking-[0.5em] text-gold mb-4">✦ FEATURED DROPS</p>
+          <h2 className="font-display text-4xl md:text-6xl tracking-[0.04em] leading-[0.95] mb-12">
+            CURATED CAPSULES.
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-px bg-border">
+            {featuredDrops.map((drop) => (
+              <article key={drop.title} className="group relative bg-background flex flex-col">
+                {drop.image ? (
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <img
+                      src={drop.image}
+                      alt={drop.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover grayscale-[0.15] transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
+                ) : (
+                  <div className="relative aspect-[4/5] flex items-center justify-center border-b border-border">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,hsl(44_65%_52%/0.10),transparent_60%)]" />
+                    <span className="relative font-display text-[10px] tracking-[0.5em] text-muted-foreground/60">
+                      EMPTY SLOT
+                    </span>
+                  </div>
+                )}
+
+                <div className="flex flex-1 flex-col p-7">
+                  <span className="font-display text-[10px] tracking-[0.4em] text-gold mb-3">
+                    {drop.tag}
+                  </span>
+                  <h3 className="font-display text-2xl tracking-[0.06em] mb-3">{drop.title}</h3>
+                  {drop.text && (
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">{drop.text}</p>
+                  )}
+                  <div className="mt-auto">
+                    {drop.apply ? (
+                      <a
+                        href="#apply"
+                        className="inline-flex items-center gap-3 border border-foreground/30 font-display text-[11px] tracking-[0.4em] px-6 py-4 hover:border-gold hover:text-gold transition-colors duration-500"
+                      >
+                        APPLY NOW
+                        <span className="transition-transform group-hover:translate-y-1">↓</span>
+                      </a>
+                    ) : (
+                      <Link
+                        to="/app"
+                        className="inline-flex items-center gap-3 border border-foreground/30 font-display text-[11px] tracking-[0.4em] px-6 py-4 hover:border-gold hover:text-gold transition-colors duration-500"
+                      >
+                        PREVIEW DROP
+                        <span className="transition-transform group-hover:translate-x-1">→</span>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SELLER APPLICATION */}
       <section id="apply" className="border-t border-border">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32 grid md:grid-cols-12 gap-12">
