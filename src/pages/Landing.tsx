@@ -5,6 +5,8 @@ import { toast } from "@/hooks/use-toast";
 import SiteFooter from "@/components/SiteFooter";
 import EarningsCalculator from "@/components/EarningsCalculator";
 import { submitWaitlist, submitSellerApplication, type SellerApplication } from "@/lib/submissions";
+import wolfThornsImg from "@/assets/card-wolfthorns.jpg";
+import anarchyImg from "@/assets/card-anarchy.jpg";
 
 const waitlistSchema = z.object({
   email: z.string().trim().email({ message: "Enter a valid email address" }).max(255),
@@ -21,6 +23,55 @@ const sellerSchema = z.object({
 
 const gearStyles = ["Streetwear", "Cut & Sew", "Customs", "Vintage"] as const;
 const dropVolumes = ["1-10 pieces", "10-50 pieces", "50+ pieces"] as const;
+
+type FeaturedDrop = {
+  title: string;
+  tag: string;
+  image: string | null;
+  apply: boolean;
+  text?: string;
+};
+
+const featuredDrops: FeaturedDrop[] = [
+  {
+    title: "WOLF N THORNS",
+    tag: "FLAGSHIP DROP",
+    image: wolfThornsImg,
+    apply: false,
+  },
+  {
+    title: "SOFISTICATED ANARCHY",
+    tag: "FEATURED BRAND",
+    image: anarchyImg,
+    apply: false,
+  },
+  {
+    title: "YOUR BRAND HERE",
+    tag: "ACCEPTING APPLICATIONS",
+    text: "Reserve your slot for the next drop season.",
+    image: null,
+    apply: true,
+  },
+];
+
+const faqItems = [
+  {
+    q: "How do listing and platform fees work?",
+    a: "A flat 3% per sale — that's it. No listing fees, no monthly subscriptions, no per-item charges. List as much as you want, pay nothing until something sells.",
+  },
+  {
+    q: "How are independent brands vetted?",
+    a: "Every application is reviewed by a curator focused on authentic streetwear, cut & sew, customs, and archive vintage. We block dropshippers and mass-produced filler to keep the Den curated and culture-first.",
+  },
+  {
+    q: "When do sellers get paid?",
+    a: "Direct, next-day payouts to your linked account. No 5–21 day holds, no rolling reserves — your money moves when your drop sells.",
+  },
+  {
+    q: "Can I sell on other platforms simultaneously?",
+    a: "Always. The Lone Den is 100% non-exclusive. Run your Shopify, Instagram, or Depop in parallel — we never lock your catalog or your audience behind us.",
+  },
+];
 
 const comparison = [
   { label: "Seller fees", den: "3% flat", them: "8–13% + payment fees" },
@@ -42,6 +93,7 @@ export default function Landing() {
     dropVolume: "1-10 pieces",
   });
   const [busy, setBusy] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const onWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -194,6 +246,70 @@ export default function Landing() {
 
       <EarningsCalculator />
 
+      {/* FEATURED DEN DROPS */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32">
+          <p className="font-display text-[11px] tracking-[0.5em] text-gold mb-4">✦ FEATURED DROPS</p>
+          <h2 className="font-display text-4xl md:text-6xl tracking-[0.04em] leading-[0.95] mb-12">
+            CURATED CAPSULES.
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-px bg-border">
+            {featuredDrops.map((drop) => (
+              <article key={drop.title} className="group relative bg-background flex flex-col">
+                {drop.image ? (
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <img
+                      src={drop.image}
+                      alt={drop.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover grayscale-[0.15] transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
+                ) : (
+                  <div className="relative aspect-[4/5] flex items-center justify-center border-b border-border">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,hsl(44_65%_52%/0.10),transparent_60%)]" />
+                    <span className="relative font-display text-[10px] tracking-[0.5em] text-muted-foreground/60">
+                      EMPTY SLOT
+                    </span>
+                  </div>
+                )}
+
+                <div className="flex flex-1 flex-col p-7">
+                  <span className="font-display text-[10px] tracking-[0.4em] text-gold mb-3">
+                    {drop.tag}
+                  </span>
+                  <h3 className="font-display text-2xl tracking-[0.06em] mb-3">{drop.title}</h3>
+                  {drop.text && (
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">{drop.text}</p>
+                  )}
+                  <div className="mt-auto">
+                    {drop.apply ? (
+                      <a
+                        href="#apply"
+                        className="inline-flex items-center gap-3 border border-foreground/30 font-display text-[11px] tracking-[0.4em] px-6 py-4 hover:border-gold hover:text-gold transition-colors duration-500"
+                      >
+                        APPLY NOW
+                        <span className="transition-transform group-hover:translate-y-1">↓</span>
+                      </a>
+                    ) : (
+                      <Link
+                        to="/app"
+                        className="inline-flex items-center gap-3 border border-foreground/30 font-display text-[11px] tracking-[0.4em] px-6 py-4 hover:border-gold hover:text-gold transition-colors duration-500"
+                      >
+                        PREVIEW DROP
+                        <span className="transition-transform group-hover:translate-x-1">→</span>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SELLER APPLICATION */}
       <section id="apply" className="border-t border-border">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32 grid md:grid-cols-12 gap-12">
@@ -311,6 +427,55 @@ export default function Landing() {
               </button>
             </div>
           </form>
+        </div>
+      </section>
+
+      {/* CREATOR FAQ */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32">
+          <p className="font-display text-[11px] tracking-[0.5em] text-gold mb-4">✦ PLATFORM INFO</p>
+          <h2 className="font-display text-4xl md:text-6xl tracking-[0.04em] leading-[0.95] mb-12">
+            FREQUENTLY ASKED QUESTIONS.
+          </h2>
+
+          <div className="divide-y divide-border border-y border-border">
+            {faqItems.map((item, idx) => {
+              const open = openFaq === idx;
+              return (
+                <div key={item.q}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(open ? null : idx)}
+                    aria-expanded={open}
+                    className="flex w-full items-center justify-between gap-6 py-7 text-left"
+                  >
+                    <span className="font-display text-base md:text-lg tracking-[0.04em]">
+                      {item.q}
+                    </span>
+                    <span
+                      className={`font-display text-lg text-gold transition-transform duration-500 ${
+                        open ? "rotate-45" : "rotate-0"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </button>
+                  <div
+                    className={`grid transition-all duration-500 ease-out ${
+                      open ? "grid-rows-[1fr] opacity-100 pb-7" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-2xl text-sm text-muted-foreground leading-relaxed">
+                        {item.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
