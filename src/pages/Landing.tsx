@@ -24,7 +24,15 @@ const sellerSchema = z.object({
 const gearStyles = ["Streetwear", "Cut & Sew", "Customs", "Vintage"] as const;
 const dropVolumes = ["1-10 pieces", "10-50 pieces", "50+ pieces"] as const;
 
-const featuredDrops = [
+type FeaturedDrop = {
+  title: string;
+  tag: string;
+  image: string | null;
+  apply: boolean;
+  text?: string;
+};
+
+const featuredDrops: FeaturedDrop[] = [
   {
     title: "WOLF N THORNS",
     tag: "FLAGSHIP DROP",
@@ -44,7 +52,7 @@ const featuredDrops = [
     image: null,
     apply: true,
   },
-] as const;
+];
 
 const faqItems = [
   {
