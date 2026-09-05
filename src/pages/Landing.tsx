@@ -380,6 +380,55 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* CREATOR FAQ */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-24 md:py-32">
+          <p className="font-display text-[11px] tracking-[0.5em] text-gold mb-4">✦ PLATFORM INFO</p>
+          <h2 className="font-display text-4xl md:text-6xl tracking-[0.04em] leading-[0.95] mb-12">
+            FREQUENTLY ASKED QUESTIONS.
+          </h2>
+
+          <div className="divide-y divide-border border-y border-border">
+            {faqItems.map((item, idx) => {
+              const open = openFaq === idx;
+              return (
+                <div key={item.q}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(open ? null : idx)}
+                    aria-expanded={open}
+                    className="flex w-full items-center justify-between gap-6 py-7 text-left"
+                  >
+                    <span className="font-display text-base md:text-lg tracking-[0.04em]">
+                      {item.q}
+                    </span>
+                    <span
+                      className={`font-display text-lg text-gold transition-transform duration-500 ${
+                        open ? "rotate-45" : "rotate-0"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </button>
+                  <div
+                    className={`grid transition-all duration-500 ease-out ${
+                      open ? "grid-rows-[1fr] opacity-100 pb-7" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-2xl text-sm text-muted-foreground leading-relaxed">
+                        {item.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <SiteFooter />
     </div>
   );
