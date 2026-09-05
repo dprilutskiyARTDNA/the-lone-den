@@ -16,7 +16,11 @@ const sellerSchema = z.object({
   brand: z.string().trim().nonempty({ message: "Brand name is required" }).max(120),
   link: z.string().trim().url({ message: "Enter a valid URL" }).max(300),
   gearType: z.enum(["Streetwear", "Cut & Sew", "Customs", "Vintage"]),
+  dropVolume: z.enum(["1-10 pieces", "10-50 pieces", "50+ pieces"]),
 });
+
+const gearStyles = ["Streetwear", "Cut & Sew", "Customs", "Vintage"] as const;
+const dropVolumes = ["1-10 pieces", "10-50 pieces", "50+ pieces"] as const;
 
 const comparison = [
   { label: "Seller fees", den: "3% flat", them: "8–13% + payment fees" },
