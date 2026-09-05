@@ -213,7 +213,7 @@ export default function Landing() {
           <form onSubmit={onSeller} className="md:col-span-7 grid sm:grid-cols-2 gap-4">
             <div className="sm:col-span-1">
               <label htmlFor="s-name" className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
-                NAME
+                FULL NAME
               </label>
               <input
                 id="s-name"
@@ -224,8 +224,20 @@ export default function Landing() {
               />
             </div>
             <div className="sm:col-span-1">
+              <label htmlFor="s-brand" className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
+                BRAND / CREATOR NAME
+              </label>
+              <input
+                id="s-brand"
+                value={seller.brand}
+                maxLength={120}
+                onChange={(e) => setSeller({ ...seller, brand: e.target.value })}
+                className={field}
+              />
+            </div>
+            <div className="sm:col-span-1">
               <label htmlFor="s-email" className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
-                EMAIL
+                EMAIL ADDRESS
               </label>
               <input
                 id="s-email"
@@ -237,20 +249,8 @@ export default function Landing() {
               />
             </div>
             <div className="sm:col-span-1">
-              <label htmlFor="s-brand" className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
-                BRAND NAME
-              </label>
-              <input
-                id="s-brand"
-                value={seller.brand}
-                maxLength={120}
-                onChange={(e) => setSeller({ ...seller, brand: e.target.value })}
-                className={field}
-              />
-            </div>
-            <div className="sm:col-span-1">
               <label htmlFor="s-link" className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
-                SOCIAL / PORTFOLIO LINK
+                INSTAGRAM / TIKTOK / PORTFOLIO LINK
               </label>
               <input
                 id="s-link"
@@ -262,28 +262,52 @@ export default function Landing() {
               />
             </div>
             <div className="sm:col-span-2">
-              <label htmlFor="s-gear" className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
-                GEAR TYPE
+              <label htmlFor="s-volume" className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
+                MONTHLY DROP VOLUME
               </label>
               <select
-                id="s-gear"
-                value={seller.gearType}
-                onChange={(e) => setSeller({ ...seller, gearType: e.target.value })}
+                id="s-volume"
+                value={seller.dropVolume}
+                onChange={(e) => setSeller({ ...seller, dropVolume: e.target.value })}
                 className={field}
               >
-                <option>Streetwear</option>
-                <option>Cut &amp; Sew</option>
-                <option>Customs</option>
-                <option>Vintage</option>
+                {dropVolumes.map((v) => (
+                  <option key={v}>{v}</option>
+                ))}
               </select>
+            </div>
+            <div className="sm:col-span-2">
+              <span className="block font-display text-[10px] tracking-[0.4em] text-muted-foreground mb-2">
+                PRIMARY GEAR STYLE
+              </span>
+              <div className="flex flex-wrap gap-2" role="group" aria-label="Primary gear style">
+                {gearStyles.map((style) => {
+                  const active = seller.gearType === style;
+                  return (
+                    <button
+                      key={style}
+                      type="button"
+                      onClick={() => setSeller({ ...seller, gearType: style })}
+                      aria-pressed={active}
+                      className={`font-display text-[11px] tracking-[0.3em] px-5 py-3 border transition-colors duration-300 ${
+                        active
+                          ? "bg-gold text-primary-foreground border-gold"
+                          : "border-border text-muted-foreground hover:border-gold hover:text-gold"
+                      }`}
+                    >
+                      {style.toUpperCase()}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
             <div className="sm:col-span-2">
               <button
                 type="submit"
                 disabled={busy}
-                className="w-full sm:w-auto bg-gold text-primary-foreground font-display text-xs tracking-[0.4em] px-10 py-4 hover:bg-foreground transition-colors duration-500 disabled:opacity-60"
+                className="w-full bg-gold text-primary-foreground font-display text-xs tracking-[0.4em] px-10 py-4 hover:bg-foreground transition-colors duration-500 disabled:opacity-60"
               >
-                SUBMIT APPLICATION
+                SUBMIT SELLER APPLICATION
               </button>
             </div>
           </form>
