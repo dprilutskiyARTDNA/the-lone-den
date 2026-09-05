@@ -170,4 +170,38 @@
     transform: rotate(180deg);
     display: inline-block;
   }
+  .den-range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+  }
+  .den-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background: hsl(var(--gold));
+    border: 2px solid hsl(var(--background));
+    box-shadow: 0 0 0 1px hsl(var(--gold)), 0 0 18px hsl(44 65% 52% / 0.55);
+    cursor: grab;
+    border-radius: 0;
+  }
+  .den-range::-webkit-slider-thumb:active {
+    cursor: grabbing;
+  }
+  .den-range::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    background: hsl(var(--gold));
+    border: 2px solid hsl(var(--background));
+    box-shadow: 0 0 0 1px hsl(var(--gold)), 0 0 18px hsl(44 65% 52% / 0.55);
+    cursor: grab;
+    border-radius: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
 }
