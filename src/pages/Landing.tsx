@@ -85,6 +85,7 @@ export default function Landing() {
     dropVolume: "1-10 pieces",
   });
   const [busy, setBusy] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const onWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
